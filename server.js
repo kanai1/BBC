@@ -1,6 +1,5 @@
 const express = require('express')
 const cors = require('cors')
-const websocket = require('./websocket')
 
 const app = express()
 
@@ -54,5 +53,3 @@ app.post('/send', (req, res, next) => {
 })
 
 const server = app.listen('8888')
-
-websocket(server)
