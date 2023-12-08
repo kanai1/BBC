@@ -4,3 +4,5 @@ const router = express.Router()
 router.use('/login', (req, res, next) => {
 	res.send('login test')
 })
+
+module.exports = router;
