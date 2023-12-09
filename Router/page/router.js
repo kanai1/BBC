@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 router.use('/chat', (req, res, next) => {
-	res.render('chat');
+	res.render('chat.ejs');
 })
 
 module.exports = router;
