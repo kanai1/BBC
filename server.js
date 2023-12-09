@@ -20,17 +20,3 @@ app.use("/", router);
 const server = app.listen(8888, () => {
   console.log("Server is listening to 8888");
 });
-
-// db 초기 데이터 구성
-const initSql = fs.readFileSync(
-  path.join(__dirname, "lib", "init.sql"),
-  "utf-8"
-);
-
-db.query(initSql, (err, results) => {
-  if (err) {
-    console.error("Error executing init.sql: ", err);
-    process.exit(1);
-  }
-  console.log("init.sql executed successfully");
-});
