@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>chating</title>
+	<link rel="stylesheet" href="chat.css">
+</head>
+<body>
+	<div id="header">
+		<h2>Withus Travel</h2>
+		<span>백엔드url: </span> <input id="BackendDomainInput" name="BackendDomainInput" type="text"/>
+		<button id="LoadingButton">로딩</button>
+	</div>
+
+	<div id="body">
+		<div class="messageBox" id="messageBox">
+			<!--메시지 요소 추가-->
+		</div>
+		<div>
+			<span>이름: </span> <input id="name" type="text"/>
+			<span>메시지: </span> <input id="message" type="text"/> <br>
+			<button id="sendButton">전송</button>
+		</div>
+	</div>
+	<script  src="chat.js"></script>
+</body>
+</html>
