@@ -1,14 +1,9 @@
 const express = require("express");
 const cors = require("cors");
-const http = require("http")
 const router = require("./Router/router");
-const { createTurnServer } = require('./lib/turn-server');
+const { startTurnServer } = require('./lib/turn-server');
 
 const app = express();
-const server = http.createServer(app);
-
-const turnServer = createTurnServer();
-turnServer.start(server);
 
 app.use(cors());
 app.use(express.json());

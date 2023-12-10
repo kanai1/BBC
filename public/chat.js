@@ -94,7 +94,7 @@ async function createOffer() {
             urls: 'stun:stun.l.google.com:19302',
         },
         { 
-            urls: 'turn:http://52.231.117.51:8888', 
+            urls: 'turn:your-turn-server-address:3478', 
             username: 'testUser', 
             credential: 'testPass' 
         }
@@ -127,8 +127,17 @@ async function createOffer() {
 
 // Answer를 생성하고 Offer를 수락하는 함수
 async function createAnswer(offer) {
-    const configuration = { iceServers: [] }; // ICE 서버는 여기에 추가 가능
-
+    const configuration = { iceServers: [
+        {
+            urls: 'stun:stun.l.google.com:19302',
+        },
+        { 
+            urls: 'turn:http://52.231.117.51:8888', 
+            username: 'testUser', 
+            credential: 'testPass' 
+        }
+    ] }; // ICE 서버는 여기에 추가 가능
+    
     localConnection = new RTCPeerConnection(configuration);
 
     // 데이터 채널 생성
@@ -163,8 +172,14 @@ function handleIceCandidate(event) {
     }
 }
 
-// 메시지를 상대방에게 전송하는 함수
 function sendMessage() {
+	if (dataChannel) {
+        dataChannel.send(JSON.stringify(data));
+    }
+}
+
+// 메시지를 상대방에게 전송하는 함수
+function sendTextMessage() {
     // 상대방에게 메시지 전송 로직을 추가하세요
     // WebSocket이나 다른 통신 수단을 사용할 수 있습니다.
 
@@ -214,3 +229,5 @@ function getValue(attribute, init = true) {
 
 // Offer 생성
 createOffer();
+
+loadingButton.addEventListener('click', sendTextMessage)
