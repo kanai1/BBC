@@ -1,7 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const router = require("./Router/router");
-const { createTurnServer } = require('./turn-server');
+const { createTurnServer } = require('./lib/turn-server');
 
 const app = express();
 
