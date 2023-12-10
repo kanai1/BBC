@@ -18,11 +18,3 @@ app.use("/", router);
 app.listen(8888, () => {
   console.log("Server is listening to 8888");
 });
-
-process.on('exit', () => {
-  turnServer.stop();
-});
-
-process.on('SIGINT', () => {
-  process.exit();
-});
