@@ -94,7 +94,7 @@ async function createOffer() {
             urls: 'stun:stun.l.google.com:19302',
         },
         { 
-            urls: 'turn:your-turn-server-address:3478', 
+            urls: 'turn:http://52.231.117.51:8888', 
             username: 'testUser', 
             credential: 'testPass' 
         }
