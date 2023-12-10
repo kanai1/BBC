@@ -13,7 +13,6 @@ turnServer.start(server);
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(turnServer)
 
 app.set("views", "./public");
 app.set("view engine", "ejs");
