@@ -40,7 +40,7 @@ const onClickauth = () => {
 };
 
 const onClickRegister = () => {
-  window.location.href = "/register";
+  window.location.href = "/page/register";
 };
 
 document.getElementById("inputId").addEventListener("input", handleInputId);

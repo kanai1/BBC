@@ -1,0 +1,55 @@
+<!-- register.ejs -->
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>회원가입</title>
+    <link rel="stylesheet" href="/register.css" />
+  </head>
+  <body>
+    <div
+      style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+        flex-direction: column;
+      "
+    >
+      <h2>회원가입</h2>
+      <br />
+      <form>
+        <div>
+          <label for="inputId">ID :</label>
+          <input type="text" id="inputId" name="inputId" />
+        </div>
+        <div>
+          <label for="inputPw">PW :</label>
+          <input type="password" id="inputPw" name="inputPw" />
+        </div>
+        <div>
+          <label for="inputRpw">Retype PW :</label>
+          <input type="password" id="inputRpw" name="inputRpw" />
+        </div>
+        <div>
+          <label for="inputName">NAME :</label>
+          <input type="text" id="inputName" name="inputName" />
+        </div>
+        <div>
+          <label for="inputAge">AGE :</label>
+          <input type="text" id="inputAge" name="inputAge" />
+        </div>
+        <div>
+          <label for="inputGender">GENDER :</label>
+          <input type="text" id="inputGender" name="inputGender" />
+        </div>
+        <div>
+          <button type="button" id="registerButton">회원가입</button>
+        </div>
+      </form>
+    </div>
+    <script src="/register.js"></script>
+  </body>
+</html>

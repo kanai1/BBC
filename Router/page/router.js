@@ -13,4 +13,8 @@ router.use("/login", (req, res, next) => {
   res.render("login.ejs");
 });
 
+router.use("/register", (req, res, next) => {
+  res.render("register.ejs");
+});
+
 module.exports = router;
