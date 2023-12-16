@@ -16,11 +16,12 @@ function displayData(data) {
   const tableBody = document.getElementById("tableBody");
   tableBody.innerHTML = "";
 
-  data.data.forEach((item) => {
+  data.data.forEach(async(item) => {
     const row = document.createElement("tr");
     const idCell = document.createElement("td");
     const destinationCell = document.createElement("td");
     const arrivalTimeCell = document.createElement("td");
+    const scoreCell = document.createElement("td");
     const aCell = document.createElement("a")
 
     aCell.setAttribute("href", "/page/chat")
@@ -28,6 +29,7 @@ function displayData(data) {
     idCell.textContent = item.travelInfoId;
     aCell.textContent = item.destination;
     arrivalTimeCell.textContent = item.arrivalTime;
+    scoreCell.textContent = await fetch(`/api/getScore/${item.userId}`)
 
     console.log(item);
 
@@ -36,6 +38,7 @@ function displayData(data) {
     row.appendChild(idCell);
     row.appendChild(destinationCell);
     row.appendChild(arrivalTimeCell);
+    row.appendChild(scoreCell)
 
     tableBody.appendChild(row);
   });
