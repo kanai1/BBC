@@ -1,10 +1,8 @@
-const loadingButton = document.getElementById("LoadingButton")
 const sendButton = document.getElementById("sendButton")
 
 let webSocket
-let oldestMessageId = 'newest'
 
-loadingButton.addEventListener('click', async() => {
+async function loading() {
 	const domain = "52.231.117.51:8888"
 	const msgList = await getMsgList(domain, oldestMessageId)
 	msgList.reverse()
@@ -16,7 +14,7 @@ loadingButton.addEventListener('click', async() => {
 		document.getElementById("BackendDomainInput").setAttribute('readonly', 'true')
 		loadingButton.textContent = '오래된 메시지 가져오기'
 	}
-})
+}
 
 sendButton.addEventListener('click', async() => {
 	const name = getValue('name', false)
@@ -52,16 +50,6 @@ function addMessage(name, msg) {
 	messageBox.scrollTop = messageBox.scrollHeight;
 }
 
-function addOldMessage(name, msg) {
-	const messageBox = document.getElementById("messageBox")
-	const spanChild = document.createElement('span')
-	const brChild = document.createElement('br')
-
-	spanChild.textContent = `${name}: ${msg}`
-	messageBox.prepend(spanChild, brChild)
-	messageBox.scrollTop = 0;
-}
-
 function getDataFromSocket(event) {
 	const data = JSON.parse(event.data)
 	const name = data.name
@@ -69,3 +57,5 @@ function getDataFromSocket(event) {
 	addMessage(name, msg)
 	console.log(event.data)
 }
+
+loading()
