@@ -14,7 +14,7 @@ let user = {
   getScore: async function (req, res, next) {
     try{
       const [rows] = await db.execute(dbQuery.getScoreById, [req.params.id])
-      res.send({data: rows[0]})
+      res.send({data: rows[0].trustScore})
     } catch(e) {
       return res.status(500).send(e)
     }
