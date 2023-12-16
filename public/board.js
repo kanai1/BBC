@@ -30,6 +30,7 @@ function displayData(data) {
     aCell.textContent = item.destination;
     arrivalTimeCell.textContent = item.arrivalTime;
     const scoreData = await fetch(`/api/getScore/${item.userId}`)
+    console.log(scoreData)
     scoreCell.textContent = scoreData.data
 
     console.log(item);
