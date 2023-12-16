@@ -21,12 +21,17 @@ function displayData(data) {
     const idCell = document.createElement("td");
     const destinationCell = document.createElement("td");
     const arrivalTimeCell = document.createElement("td");
+    const aCell = document.createElement("a")
+
+    aCell.setAttribute("href", "/page/chat")
 
     idCell.textContent = item.travelInfoId;
     destinationCell.textContent = item.destination;
     arrivalTimeCell.textContent = item.arrivalTime;
 
     console.log(item);
+
+    destinationCell.appendChild(aCell);
 
     row.appendChild(idCell);
     row.appendChild(destinationCell);
