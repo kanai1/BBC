@@ -1,16 +1,11 @@
-const express = require("express");
-const router = express.Router();
-const db = require("../lib/DB");
-const dbQuery = require('../lib/DB-query');
-
 let Matches = {
 
     // 중앙 서버 DB에서 여행객 정보 가져오기
     getTouristInfofromCentralServer: async function(req, res, next) {
         try {
-            const touristIdList = req.touristListFromDHT.map(tourist => tourist.id);
+            // 예시: 모든 여행객 정보를 조회
             const [tourists] = await db.execute(dbQuery.getAllTravel);
-            req.tourists = tourists.filter(tourist => touristIdList.includes(tourist.userId));
+            req.tourists = tourists;
             next();
         } catch (error) {
             console.error("Error fetching tourist info from central server:", error);
@@ -26,11 +21,9 @@ let Matches = {
             // 점수 계산 로직
             touristList.forEach(tourist => {
                 tourist.combinationScore = 0;
-                // 성별 점수
                 if (tourist.gender === req.body.clientGender) {
                     tourist.combinationScore += 100;
                 }
-                // 나이 차이 점수
                 const ageDifference = Math.abs(tourist.age - req.body.clientAge);
                 if (ageDifference <= 2) {
                     tourist.combinationScore += 70;
@@ -41,18 +34,18 @@ let Matches = {
                 } else {
                     tourist.combinationScore -= 10;
                 }
-                // 추천 점수
-                const recommendationScore = tourist.recommendationScore;
-                if (recommendationScore <= 20) {
-                    tourist.combinationScore -= 10;
-                } else if (recommendationScore <= 50) {
-                    tourist.combinationScore += 10;
-                } else if (recommendationScore <= 100) {
-                    tourist.combinationScore += 20;
+                if (tourist.recommendationScore) {
+                    const recommendationScore = tourist.recommendationScore;
+                    if (recommendationScore <= 20) {
+                        tourist.combinationScore -= 10;
+                    } else if (recommendationScore <= 50) {
+                        tourist.combinationScore += 10;
+                    } else if (recommendationScore <= 100) {
+                        tourist.combinationScore += 20;
+                    }
                 }
             });
 
-            // 정렬
             touristList.sort((a, b) => b.combinationScore - a.combinationScore);
 
             res.json(touristList);
@@ -61,7 +54,5 @@ let Matches = {
         }
     }
 };
-
-
 
 module.exports = Matches;
