@@ -48,10 +48,10 @@ async function init() {
     const response = await fetch('/api/getDestinations');
     const data = await response.json()
     console.log(data)
-    data.destination.forEach((i) => {
+    data.destinations.forEach((i) => {
       const option = document.createElement("option")
-      option.setAttribute("value", i)
-      option.textContent = i
+      option.setAttribute("value", i.destination)
+      option.textContent = i.destination
       select.appendChild(option)
     })
   } catch(e) {
