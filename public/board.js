@@ -45,10 +45,13 @@ function removeAllChildren(element) {
 
 const select = document.getElementById("destination")
 
-select.addEventListener("change", () => {
+select.addEventListener("change", async () => {
   const tableBody = document.getElementById("tableBody");
   removeAllChildren(tableBody)
-  displayData(fetchData())
+  const data = await fetchData();
+  if (data) {
+    displayData(data);
+  }
 })
 
 // 데이터 요청 후 표시 함수 호출
