@@ -1,7 +1,8 @@
 const express = require("express");
 const cors = require("cors");
-const router = require("./Router/router");
 const CookieParser = require('cookie-parser')
+const router = require("./Router/router");
+const websocket = require("./lib/websocket")
 
 const app = express();
 
@@ -16,6 +17,8 @@ app.use(express.static(`${__dirname}/public`));
 
 app.use("/", router);
 
-app.listen(8888, () => {
+const server = app.listen(8888, () => {
   console.log("Server is listening to 8888");
 });
+
+websocket(server)
