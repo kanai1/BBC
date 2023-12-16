@@ -1,0 +1,28 @@
+<!-- public/matches.ejs -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Travel Matches</title>
+  <link rel="stylesheet" href="/styles/matches.css">
+</head>
+<body>
+  <div class="match-container">
+    <h2>여행객 매칭</h2>
+    <form id="matchForm">
+      <div>
+        <label for="destination">목적지:</label>
+        <input type="text" id="destination" name="destination">
+      </div>
+      <div>
+        <label for="arrivalTime">도착 날짜 및 시간:</label>
+        <input type="datetime-local" id="arrivalTime" name="arrivalTime">
+      </div>
+      <button type="submit">매칭 시작</button>
+    </form>
+    <div id="matchResults"></div>
+  </div>
+  <script src="/scripts/matches.js"></script>
+</body>
+</html>
