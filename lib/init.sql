@@ -1,6 +1,9 @@
+-- DROP TABLE travel_info;
+-- DROP TABLE USERS;
+
 CREATE TABLE IF NOT EXISTS users (
     userId INT AUTO_INCREMENT PRIMARY KEY,
-    loginId VARCHAR(50) NOT NULL,
+    loginId VARCHAR(50) NOT NULL UNIQUE,
     loginPw VARCHAR(50) NOT NULL,
     name VARCHAR(100) NOT NULL,
     age INT,
@@ -21,7 +24,7 @@ VALUES
 ('login1', 'password1', '이형석', 25, 'female', 10),
 ('login2', 'password2', '권시훈', 30, 'male', 8),
 ('login3', 'password3', '김민성', 35, 'male', 12),
-('login4', 'password4', '한주성', 35, 'male', 12)
+('login4', 'password4', '한주성', 35, 'male', 12),
 ('login5', 'password5', '홍길동', 28, 'male', 15),
 ('login6', 'password6', '성춘향', 22, 'female', 9),
 ('login7', 'password7', '이몽룡', 29, 'male', 11),
@@ -39,16 +42,14 @@ VALUES
 ('login19', 'password19', '송지효', 39, 'female', 16),
 ('login20', 'password20', '이효리', 42, 'female', 17);
 
+
 INSERT INTO travel_info (userId, destination, arrivalTime)
 VALUES
-('1', 'Paris', '2023-12-10 10:00:00'),
-('2', 'Tokyo', '2023-12-11 15:30:00'),
-<<<<<<< Updated upstream
-('3', 'New York', '2023-12-12 08:45:00')
-('4', 'London', '2023-12-13 14:00:00'),
-('5', 'Seoul', '2023-12-14 20:15:00'),
-('6', 'Sydney', '2023-12-15 09:30:00');
-('7', 'Beijing', '2023-12-16 10:30:00');
-=======
-('3', 'New York', '2023-12-12 08:45:00');
->>>>>>> Stashed changes
+(1, 'Paris', '2023-12-10 10:00:00'),
+(2, 'Tokyo', '2023-12-11 15:30:00'),
+(4, 'London', '2023-12-13 14:00:00'),
+(5, 'Seoul', '2023-12-14 20:15:00'),
+(6, 'Sydney', '2023-12-15 09:30:00'),
+(7, 'Beijing', '2023-12-16 10:30:00'),
+(3, 'New York', '2023-12-12 08:45:00');
+    
