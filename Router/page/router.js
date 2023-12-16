@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 router.use("/chat", (req, res, next) => {
-  res.render("chat.ejs");
+  res.render("chat.ejs", {name: req.jwt.name});
 });
 
 router.use("/board", (req, res, next) => {
