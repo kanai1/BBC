@@ -26,7 +26,7 @@ function displayData(data) {
     aCell.setAttribute("href", "/page/chat")
 
     idCell.textContent = item.travelInfoId;
-    destinationCell.textContent = item.destination;
+    aCell.textContent = item.destination;
     arrivalTimeCell.textContent = item.arrivalTime;
 
     console.log(item);
