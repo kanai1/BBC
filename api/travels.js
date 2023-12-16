@@ -9,7 +9,7 @@ let travel = {
     try {
       const [rows] = await db.execute(dbQuery.getAllTravelByDes, [des]);
       res.send({ data: rows });
-    } catch {
+    } catch(err) {
       return res.status(500).send(err);
     }
   },
@@ -36,7 +36,7 @@ let travel = {
     try {
       const [destinations] = await db.execute(dbQuery.getDestination, [req.jwt.id])
       res.send({destinations})
-    } catch {
+    } catch(err) {
       return res.status(500).send(err);
     }
   }
