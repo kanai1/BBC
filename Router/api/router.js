@@ -9,7 +9,8 @@ const matches = require("../../api/matches");
 router.post("/login", login.login);
 router.post("/register", login.register);
 router.use("/users", users.getAllUsers);
-router.get("/travels", travels.getAllTravels);
+router.get("/travels/:des", travels.getAllTravels);
+router.get("/getDestinations", travels.getDestination);
 router.use("/matches", matches.getTouristInfofromCentralServer);
 
 //router.get("/users/:id", users.getUserbyId);

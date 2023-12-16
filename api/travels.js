@@ -5,8 +5,9 @@ const dbQuery = require("../lib/DB-query");
 
 let travel = {
   getAllTravels: async function (req, res, next) {
+    const des = req.params.des
     try {
-      const [rows] = await db.execute(dbQuery.getAllTravel);
+      const [rows] = await db.execute(dbQuery.getAllTravelByDes, [des]);
       res.send({ data: rows });
     } catch {
       return res.status(500).send(err);
@@ -30,6 +31,15 @@ let travel = {
       throw e;
     }
   },
+
+  getDestination: async function(req, res, next) {
+    try {
+      const [destinations] = await db.execute(dbQuery.getDestination, [req.jwt.id])
+      res.send({destinations})
+    } catch {
+      return res.status(500).send(err);
+    }
+  }
 };
 
 module.exports = travel;
