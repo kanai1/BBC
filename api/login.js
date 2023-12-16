@@ -25,7 +25,7 @@ let Login = {
   },
 
   async idCheck(id) {
-    return this.idSpacialCharactersCheck(id) && (await this.idDoubleCheck(id));
+    return this.idSpecialCharactersCheck(id) && (await this.idDoubleCheck(id));
   },
 
   login: async function (req, res, next) {
@@ -66,7 +66,9 @@ let Login = {
     const age = req.body.age;
     const gender = req.body.gender;
 
-    if (await this.idCheck(id)) {
+    console.log(req); //테스트
+
+    if (await Login.idCheck(id)) {
       try {
         await connection.execute(dbQuery.register, [
           id,
