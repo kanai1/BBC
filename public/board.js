@@ -47,6 +47,7 @@ async function init() {
   try {
     const response = await fetch('/api/getDestinations');
     const data = await response.json()
+    console.log(data)
     data.destination.forEach((i) => {
       const option = document.createElement("option")
       option.setAttribute("value", i)
