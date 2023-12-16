@@ -6,7 +6,7 @@ document.getElementById("matchForm").addEventListener("submit", function(e) {
     const age = document.getElementById("age").value;
     const gender = document.getElementById("gender").value;
 
-    fetch("/api/match", {
+    fetch("/api/matches", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
