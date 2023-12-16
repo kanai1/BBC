@@ -6,7 +6,7 @@ document.getElementById("matchForm").addEventListener("submit", function(e) {
     const age = document.getElementById("age").value;
     const gender = document.getElementById("gender").value;
 
-    fetch("/api/match", {
+    fetch("/api/matches", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
@@ -30,6 +30,7 @@ document.getElementById("matchForm").addEventListener("submit", function(e) {
 
       matches.forEach(match => {
         const div = document.createElement("div");
+        div.className = "match-entry"; // CSS 클래스를 추가하여 스타일을 적용할 수 있습니다.
         div.innerHTML = `여행 정보 ID: ${match.travelInfoId}, 사용자 ID: ${match.userId}, 목적지: ${match.destination}, 신뢰도 점수: ${match.trustScore}`;
         resultsContainer.appendChild(div);
       });
