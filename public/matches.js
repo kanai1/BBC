@@ -3,13 +3,15 @@ document.getElementById("matchForm").addEventListener("submit", function(e) {
     e.preventDefault();
 
     const destination = document.getElementById("destination").value;
+    const age = document.getElementById("age").value;
+    const gender = document.getElementById("gender").value;
 
     fetch("/api/match", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ destination })
+      body: JSON.stringify({ destination, age, gender })
     })
     .then(res => res.json())
     .then(matches => {
