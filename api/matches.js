@@ -4,16 +4,13 @@ const db = require("../lib/DB");
 const dbQuery = require('../lib/DB-query');
 
 let Matches = {
+
+    // 중앙 서버 DB에서 여행객 정보 가져오기
     getTouristInfofromCentralServer: async function(req, res, next) {
         try {
-            // 예시로 모든 여행 정보를 가져오는 쿼리를 사용 (실제에는 적합한 쿼리를 사용해야 함)
+            const touristIdList = req.touristListFromDHT.map(tourist => tourist.id);
             const [tourists] = await db.execute(dbQuery.getAllTravel);
-            
-            // 이후 필요한 로직을 추가합니다. 예를 들어, req에서 필요한 데이터를 추출하고 필터링을 할 수 있습니다.
-            // 예시: const filteredTourists = tourists.filter(...);
-
-            // 필터링된 결과를 다음 미들웨어로 전달
-            req.tourists = tourists; // 혹은 filteredTourists
+            req.tourists = tourists.filter(tourist => touristIdList.includes(tourist.userId));
             next();
         } catch (error) {
             console.error("Error fetching tourist info from central server:", error);
@@ -21,20 +18,50 @@ let Matches = {
         }
     },
 
+    // 여행객 매칭 및 점수 계산
     matchTourists: async function(req, res) {
         try {
-            // getTouristInfofromCentralServer 미들웨어에서 설정된 tourists 사용
-            const matchedTourists = req.tourists;
+            let touristList = req.tourists;
 
-            // 필요한 추가 로직 (점수 계산, 정렬 등)
-            // ...
+            // 점수 계산 로직
+            touristList.forEach(tourist => {
+                tourist.combinationScore = 0;
+                // 성별 점수
+                if (tourist.gender === req.body.clientGender) {
+                    tourist.combinationScore += 100;
+                }
+                // 나이 차이 점수
+                const ageDifference = Math.abs(tourist.age - req.body.clientAge);
+                if (ageDifference <= 2) {
+                    tourist.combinationScore += 70;
+                } else if (ageDifference <= 6) {
+                    tourist.combinationScore += 40;
+                } else if (ageDifference <= 9) {
+                    tourist.combinationScore += 20;
+                } else {
+                    tourist.combinationScore -= 10;
+                }
+                // 추천 점수
+                const recommendationScore = tourist.recommendationScore;
+                if (recommendationScore <= 20) {
+                    tourist.combinationScore -= 10;
+                } else if (recommendationScore <= 50) {
+                    tourist.combinationScore += 10;
+                } else if (recommendationScore <= 100) {
+                    tourist.combinationScore += 20;
+                }
+            });
 
-            res.json(matchedTourists);
+            // 정렬
+            touristList.sort((a, b) => b.combinationScore - a.combinationScore);
+
+            res.json(touristList);
         } catch (error) {
             res.status(500).send(error.message);
         }
     }
 };
+
 
 
 module.exports = Matches;
