@@ -27,16 +27,12 @@ const onClickLogin = () => {
     .then((res) => res.json())
     .then((json) => {
       if (json.isLogin === true) {
-        setCookie("token", json.token);
-        window.location.href = "/main";
+        document.cookie = `token=${json.token}`
+        window.location.href = "/board";
       } else {
         alert("로그인 실패");
       }
     });
-};
-
-const onClickauth = () => {
-  window.location.href = "/api/login";
 };
 
 const onClickRegister = () => {
@@ -49,4 +45,3 @@ document.getElementById("loginButton").addEventListener("click", onClickLogin);
 document
   .getElementById("registerButton")
   .addEventListener("click", onClickRegister);
-document.getElementById("authButton").addEventListener("click", onClickauth);
