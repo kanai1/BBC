@@ -35,10 +35,6 @@ const onClickLogin = () => {
     });
 };
 
-const onClickauth = () => {
-  window.location.href = "/api/login";
-};
-
 const onClickRegister = () => {
   window.location.href = "/register";
 };
@@ -49,4 +45,3 @@ document.getElementById("loginButton").addEventListener("click", onClickLogin);
 document
   .getElementById("registerButton")
   .addEventListener("click", onClickRegister);
-document.getElementById("authButton").addEventListener("click", onClickauth);
