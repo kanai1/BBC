@@ -12,6 +12,24 @@ let travel = {
       return res.status(500).send(err);
     }
   },
+
+  register: async function (req, res) {
+    const userId = req.body.userId;
+    const destination = req.body.destination;
+    const arrivalTime = req.body.arrivalTime;
+
+    try {
+      await db.execute(dbQuery.registerTravel, [
+        userId,
+        destination,
+        arrivalTime,
+      ]);
+      res.send({ result: true });
+    } catch (e) {
+      console.log(e);
+      throw e;
+    }
+  },
 };
 
 module.exports = travel;

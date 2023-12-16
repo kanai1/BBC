@@ -1,4 +1,3 @@
-// login.js
 const loginButton = document.getElementById("loginButton");
 const inputId = document.getElementById("inputId");
 const inputPw = document.getElementById("inputPw");

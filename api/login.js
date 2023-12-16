@@ -40,7 +40,7 @@ let Login = {
       console.log("User info is: ", rows);
       if (rows.length > 0) {
         var token = jwt_utils.genarateAccessToken(
-          rows[0]["id"],
+          rows[0]["userId"], //id에서 userId로 수정
           rows[0]["name"]
         );
         sendData.isLogin = true;
@@ -65,8 +65,6 @@ let Login = {
     const username = req.body.username;
     const age = req.body.age;
     const gender = req.body.gender;
-
-    console.log(req); //테스트
 
     if (await Login.idCheck(id)) {
       try {

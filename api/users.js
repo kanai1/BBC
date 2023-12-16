@@ -1,17 +1,28 @@
 const express = require("express");
 const router = express.Router();
 const db = require("../lib/DB");
-const dbQuery = require('../lib/DB-query')
+const dbQuery = require("../lib/DB-query");
 
 let user = {
-  getAllUsers: async function(req, res, next) {
+  getAllUsers: async function (req, res, next) {
     try {
-      const [rows] = await db.execute(dbQuery.getAllUser)
-      res.send({data: rows})
-    }catch {
-      return res.status(500).send(err)
+      const [rows] = await db.execute(dbQuery.getAllUser);
+      res.send({ data: rows });
+    } catch {
+      return res.status(500).send(err);
     }
-  }
-}
+  },
+
+  // getUserbyId: async function (req, res, next) {
+  //   const loginId = req.params.loginId;
+
+  //   try {
+  //     const [rows] = await db.execute(dbQuery.getUserbyId, [loginId]);
+  //     res.send({ data: rows });
+  //   } catch {
+  //     return res.status(500).send(err);
+  //   }
+  // },
+};
 
 module.exports = user;

@@ -1,0 +1,52 @@
+<!-- register.ejs -->
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>여행 등록</title>
+    <!--link rel="stylesheet" href="/register.css" /-->
+  </head>
+  <body>
+    <div
+      style="
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+        flex-direction: column;
+      "
+    >
+      <h2>여행 등록</h2>
+      <br />
+      <form>
+        <div>
+          <input
+            type="text"
+            value="<%=id %>"
+            id="inputUserId"
+            name="inputUserId"
+            readonly
+          />
+        </div>
+        <div>
+          <label for="inputDestination">여행지 :</label>
+          <input type="text" id="inputDestination" name="inputDestination" />
+        </div>
+        <div>
+          <label for="inputArrivalTime">도착시간 :</label>
+          <input
+            type="datetime-local"
+            id="inputArrivalTime"
+            name="inputArrivalTime"
+          />
+        </div>
+        <div>
+          <button type="button" id="registerButton">여행등록</button>
+        </div>
+      </form>
+    </div>
+    <script src="/registerTravel.js"></script>
+  </body>
+</html>
