@@ -1,3 +1,5 @@
+const db = require("../lib/DB")
+
 let Matches = {
 
     // 중앙 서버 DB에서 여행객 정보 가져오기
