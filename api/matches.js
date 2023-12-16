@@ -1,4 +1,5 @@
-const db = require("../lib/DB")
+const db = require("../lib/DB");
+const dbQuery = require("../lib/DB-query");
 
 let Matches = {
 
