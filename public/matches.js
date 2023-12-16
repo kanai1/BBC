@@ -1,3 +1,4 @@
+// public/matches.js
 document.getElementById("matchForm").addEventListener("submit", function(e) {
     e.preventDefault();
 
@@ -12,7 +13,12 @@ document.getElementById("matchForm").addEventListener("submit", function(e) {
       },
       body: JSON.stringify({ destination, age, gender })
     })
-    .then(res => res.json())
+    .then(res => {
+      if (!res.ok) {
+        throw new Error(`서버 응답: ${res.status} ${res.statusText}`);
+      }
+      return res.json();
+    })
     .then(matches => {
       const resultsContainer = document.getElementById("matchResults");
       resultsContainer.innerHTML = "";
@@ -30,6 +36,6 @@ document.getElementById("matchForm").addEventListener("submit", function(e) {
     })
     .catch(error => {
       console.error('Error:', error);
-      alert('매칭 요청 중 오류가 발생했습니다.');
+      alert(`매칭 요청 중 오류가 발생했습니다: ${error.message}`);
     });
 });
