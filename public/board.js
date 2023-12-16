@@ -1,6 +1,6 @@
 // 데이터 요청 함수
 async function fetchData() {
-  const des = docuemnt.getElementById('destination').value
+  const des = document.getElementById('destination').value
   try {
     const response = await fetch(`/api/travels/${des}`);
     const data = await response.json();
