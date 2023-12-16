@@ -1,0 +1,9 @@
+.messageBox {
+	margin : 20px; 
+	padding : 30px;
+	border : 1px solid black;
+	border-radius : 5px;
+	height: 400px;
+	width: 30%;
+	overflow:auto;
+  }
