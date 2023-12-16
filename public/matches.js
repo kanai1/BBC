@@ -15,7 +15,7 @@ document.getElementById("matchForm").addEventListener("submit", function(e) {
     })
     .then(res => {
       if (!res.ok) {
-        throw new Error(`서버 응답: ${res.status} ${res.statusText}`);
+        throw new Error(`서버 응답 오류: ${res.status} ${res.statusText}`);
       }
       return res.json();
     })
@@ -36,6 +36,6 @@ document.getElementById("matchForm").addEventListener("submit", function(e) {
     })
     .catch(error => {
       console.error('Error:', error);
-      alert(`매칭 요청 중 오류가 발생했습니다: ${error.message}`);
+      alert(`매칭 요청 중 오류가 발생했습니다: ${error.message}\n오류 위치: ${error.stack}`);
     });
 });
