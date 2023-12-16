@@ -43,8 +43,12 @@ INSERT INTO travel_info (userId, destination, arrivalTime)
 VALUES
 ('1', 'Paris', '2023-12-10 10:00:00'),
 ('2', 'Tokyo', '2023-12-11 15:30:00'),
+<<<<<<< Updated upstream
 ('3', 'New York', '2023-12-12 08:45:00')
 ('4', 'London', '2023-12-13 14:00:00'),
 ('5', 'Seoul', '2023-12-14 20:15:00'),
 ('6', 'Sydney', '2023-12-15 09:30:00');
 ('7', 'Beijing', '2023-12-16 10:30:00');
+=======
+('3', 'New York', '2023-12-12 08:45:00');
+>>>>>>> Stashed changes
