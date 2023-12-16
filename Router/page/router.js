@@ -18,4 +18,8 @@ router.use("/register", (req, res, next) => {
   res.render("register.ejs");
 });
 
+router.use("/matches", (req, res, next) => {
+  res.render("matches.ejs");
+});
+
 module.exports = router;
