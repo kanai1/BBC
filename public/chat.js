@@ -4,16 +4,7 @@ let webSocket
 
 async function loading() {
 	const domain = "52.231.117.51:8888"
-	const msgList = await getMsgList(domain, oldestMessageId)
-	msgList.reverse()
-	msgList.map( (e) => {
-		addOldMessage(e.name, e.msg)
-	})
-	if(loadingButton.textContent == '로딩') {
-		setWebSocket(domain)
-		document.getElementById("BackendDomainInput").setAttribute('readonly', 'true')
-		loadingButton.textContent = '오래된 메시지 가져오기'
-	}
+	setWebSocket(domain)
 }
 
 sendButton.addEventListener('click', async() => {
