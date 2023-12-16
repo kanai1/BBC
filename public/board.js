@@ -1,7 +1,6 @@
 // 데이터 요청 함수
 async function fetchData() {
   const des = docuemnt.getElementById('destination').value
-
   try {
     const response = await fetch(`/api/travels/${des}`);
     const data = await response.json();
@@ -37,9 +36,20 @@ function displayData(data) {
   });
 }
 
-async function getTravelInfo() {
-
+function removeAllChildren(element) {
+  while (element.firstChild) {
+    removeAllChildren(element.firstChild);
+    element.removeChild(element.firstChild);
+  }
 }
+
+const select = document.getElementById("destination")
+
+select.addEventListener("change", () => {
+  const tableBody = document.getElementById("tableBody");
+  removeAllChildren(tableBody)
+  displayData(fetchData())
+})
 
 // 데이터 요청 후 표시 함수 호출
 async function init() {
