@@ -28,7 +28,7 @@ const onClickLogin = () => {
     .then((json) => {
       if (json.isLogin === true) {
         document.cookie = `token=${json.token}`
-        window.location.href = "/main";
+        window.location.href = "/board";
       } else {
         alert("로그인 실패");
       }
