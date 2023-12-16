@@ -41,7 +41,5 @@ let matches = {
     }
 };
 
-// 클라이언트와 여행객 매칭을 위한 API 라우트
-router.post('/match', Matches.handleMatchRequest);
 
-module.exports = router;
+module.exports = matches;
