@@ -12,6 +12,7 @@ router.use("/users", users.getAllUsers);
 router.get("/travels/:des", travels.getAllTravels);
 router.get("/getDestinations", travels.getDestination);
 router.use("/matches", matches.getTouristInfofromCentralServer);
+router.get("/getScore/:id", users.getScore)
 
 //router.get("/users/:id", users.getUserbyId);
 router.post("/travels", travels.register);
