@@ -29,7 +29,8 @@ function displayData(data) {
     idCell.textContent = item.travelInfoId;
     aCell.textContent = item.destination;
     arrivalTimeCell.textContent = item.arrivalTime;
-    scoreCell.textContent = await fetch(`/api/getScore/${item.userId}`)
+    const scoreData = await fetch(`/api/getScore/${item.userId}`)
+    scoreCell.textContent = scoreData.data
 
     console.log(item);
 
